@@ -234,20 +234,15 @@
             display: inline-block;
             margin-bottom: 10px;
         }
-        .status-badge.active {
-            background: rgba(255, 107, 107, 0.1);
-            color: var(--status-active);
-            border: 1px solid rgba(255, 107, 107, 0.2);
-        }
-        .status-badge.pending {
-            background: rgba(255, 180, 84, 0.1);
-            color: var(--accent);
-            border: 1px solid rgba(255, 180, 84, 0.2);
-        }
-        .status-badge.completed {
+        .status-badge.available {
             background: rgba(127, 217, 98, 0.1);
             color: var(--accent-green);
             border: 1px solid rgba(127, 217, 98, 0.2);
+        }
+        .status-badge.completed {
+            background: rgba(57, 186, 230, 0.1);
+            color: var(--accent-blue);
+            border: 1px solid rgba(57, 186, 230, 0.2);
         }
         .project-meta {
             font-size: 13px;
@@ -356,7 +351,7 @@
         <a href="#home">HOME</a>
         <a href="#services">EXPERIENCE</a>
         <a href="#about">SYSTEMS</a>
-        <a href="#projects">PROJECTS</a>
+        <a href="#projects">AVAILABILITY</a>
         <a href="#reviews">REVIEWS</a>
         <a href="#contact">HIRE ME</a>
     </div>
@@ -424,26 +419,26 @@
             </div>
         </section>
 
-        <!-- CURRENT PROJECTS -->
+        <!-- CURRENT AVAILABILITY -->
         <section id="projects">
-            <h2>Current Projects</h2>
+            <h2>Current Availability</h2>
             <div class="services-grid">
                 <div class="box">
-                    <span class="status-badge active">In Progress</span>
-                    <h3>Project Celestial</h3>
-                    <p>Developing a secure data architecture layer using ProfileService alongside an automated map-rotation and round loop structure.</p>
-                    <div class="project-meta">Scope: Full Backend Architecture</div>
+                    <span class="status-badge available">Open</span>
+                    <h3>Commission Slot #1</h3>
+                    <p>Ready for immediate start. Ideal for full-scale backend development, custom data systems, complex interactive mechanics, or optimization projects.</p>
+                    <div class="project-meta">Availability: Instant Queue Access</div>
                 </div>
 
                 <div class="box">
-                    <span class="status-badge pending">Queued Contract</span>
-                    <h3>Combat Sandbox UI</h3>
-                    <p>Hooking up custom responsive shop layouts, inventory arrays, and dynamic overhead client trackers to a secure monetization engine.</p>
-                    <div class="project-meta">Scope: UI Core & Data Integration</div>
+                    <span class="status-badge available">Open</span>
+                    <h3>Commission Slot #2</h3>
+                    <p>Open for small to mid-range configurations, feature integrations, custom webhook systems, security metric audits, or UI core logic additions.</p>
+                    <div class="project-meta">Availability: Clear Schedule</div>
                 </div>
 
                 <div class="box">
-                    <span class="status-badge completed">Completed</span>
+                    <span class="status-badge completed">Recent Deployment</span>
                     <h3>Tycoon Webhook Suite</h3>
                     <p>Configured real-time player progression telemetry and logging pipelines targeting secure Discord webhook routing layers.</p>
                     <div class="project-meta">Status: Shipped & Stabilized</div>
