@@ -1,0 +1,420 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Developer Portfolio</title>
+    <!-- Google Fonts for a cleaner, modern look -->
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&family=Plus+Jakarta+Sans:wght@400;600;800&display=swap" rel="family">
+
+    <style>
+        :root {
+            --bg-color: #0f1419;
+            --card-bg: #14191f;
+            --text-main: #e6edf3;
+            --text-muted: #5c6773;
+            --accent: #ffb454;
+            --accent-secondary: #e6b450;
+            --accent-green: #7fd962;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            margin: 0;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            overflow-x: hidden;
+            line-height: 1.6;
+        }
+
+        /* CODE STYLE FONTS */
+        code, pre, .navbar a, .button, .tag {
+            font-family: 'JetBrains Mono', monospace;
+        }
+
+        /* NAVIGATION */
+        .navbar {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(15, 20, 25, 0.85);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            padding: 20px;
+            z-index: 1000;
+            border-bottom: 1px solid rgba(255, 180, 84, 0.1);
+        }
+
+        .navbar a {
+            color: var(--text-muted);
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 14px;
+            transition: color 0.2s ease, transform 0.2s ease;
+        }
+
+        .navbar a:hover {
+            color: var(--accent);
+            transform: translateY(-1px);
+        }
+
+        /* MAIN CONTENT HOLDER */
+        .content {
+            position: relative;
+            z-index: 1;
+            max-width: 1000px;
+            margin: auto;
+            padding: 0 20px;
+        }
+
+        /* SECTIONS */
+        section {
+            padding: 100px 0 60px 0;
+        }
+
+        /* HERO SECTION */
+        .hero {
+            text-align: center;
+            padding-top: 180px;
+            min-height: 70vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .hero h1 {
+            font-size: 64px;
+            font-weight: 800;
+            letter-spacing: -2px;
+            margin-bottom: 15px;
+        }
+
+        .glow {
+            color: var(--accent);
+            text-shadow: 0 0 30px rgba(255, 180, 84, 0.2);
+        }
+
+        .hero p {
+            font-size: 18px;
+            color: var(--text-muted);
+            margin-bottom: 20px;
+        }
+
+        .tag {
+            background: rgba(127, 217, 98, 0.1);
+            color: var(--accent-green);
+            padding: 6px 16px;
+            border-radius: 20px;
+            font-size: 14px;
+            font-weight: 700;
+            border: 1px solid rgba(127, 217, 98, 0.2);
+            display: inline-block;
+        }
+
+        /* SECTION HEADINGS */
+        h2 {
+            font-size: 28px;
+            font-weight: 800;
+            margin-bottom: 30px;
+            position: relative;
+            display: inline-block;
+        }
+
+        h2::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: -6px;
+            width: 40px;
+            height: 3px;
+            background: var(--accent);
+            border-radius: 2px;
+        }
+
+        /* GRID LAYOUTS */
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
+        }
+
+        .dev-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+            gap: 25px;
+        }
+
+        @media (max-width: 500px) {
+            .dev-grid { grid-template-columns: 1fr; }
+            .hero h1 { font-size: 44px; }
+        }
+
+        /* CARDS / BOXES */
+        .box {
+            background: var(--card-bg);
+            padding: 30px;
+            border-radius: 16px;
+            border: 1px solid rgba(255, 255, 255, 0.03);
+            transition: transform 0.3s cubic-bezier(0.25, 0.8, 0.25, 1), border-color 0.3s ease;
+        }
+
+        .box:hover {
+            transform: translateY(-4px);
+            border-color: rgba(255, 180, 84, 0.2);
+        }
+
+        .box h3 {
+            color: var(--accent-secondary);
+            font-size: 20px;
+            margin-bottom: 12px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .box p {
+            color: var(--text-muted);
+            font-size: 15px;
+            margin-bottom: 15px;
+        }
+
+        .box ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .box ul li {
+            font-size: 14px;
+            color: var(--text-main);
+            margin-bottom: 8px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .box ul li::before {
+            content: "→";
+            color: var(--accent);
+        }
+
+        /* REVIEWS */
+        .review-card {
+            background: var(--card-bg);
+            padding: 30px;
+            border-radius: 16px;
+            border-left: 4px solid var(--accent);
+        }
+
+        .stars {
+            color: var(--accent-secondary);
+            font-size: 18px;
+            margin-bottom: 15px;
+        }
+
+        .review-text {
+            font-style: italic;
+            color: var(--text-main);
+            margin-bottom: 15px;
+            font-size: 16px;
+        }
+
+        .reviewer {
+            color: var(--accent);
+            font-weight: 700;
+            font-size: 14px;
+        }
+
+        /* BUTTONS & LINKS */
+        .button {
+            background: var(--accent);
+            color: var(--bg-color);
+            padding: 12px 28px;
+            border-radius: 8px;
+            text-decoration: none;
+            display: inline-block;
+            font-weight: 700;
+            font-size: 15px;
+            transition: background 0.2s ease, transform 0.1s ease;
+        }
+
+        .button:hover {
+            background: var(--accent-secondary);
+            transform: scale(1.02);
+        }
+
+        .contact-info {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            gap: 15px;
+        }
+
+        .discord-tag {
+            background: rgba(255, 255, 255, 0.05);
+            padding: 8px 14px;
+            border-radius: 6px;
+            font-size: 14px;
+            color: var(--text-main);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        /* ROBUX BACKGROUND */
+        #robux-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            overflow: hidden;
+            z-index: 0;
+        }
+
+        .robux {
+            position: absolute;
+            top: -50px;
+            color: var(--accent);
+            font-family: 'JetBrains Mono', monospace;
+            font-weight: 700;
+            animation: fall linear infinite;
+            opacity: 0.15; /* Subtly integrated so it doesn't distract */
+        }
+
+        @keyframes fall {
+            0% { transform: translateY(-50px) rotate(0deg); }
+            100% { transform: translateY(110vh) rotate(360deg); }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- BACKGROUND EFFECT -->
+    <div id="robux-container"></div>
+
+    <!-- NAVIGATION BAR -->
+    <div class="navbar">
+        <a href="#home">HOME</a>
+        <a href="#services">SERVICES</a>
+        <a href="#about">SYSTEMS</a>
+        <a href="#reviews">REVIEWS</a>
+        <a href="#contact">CONTACT</a>
+    </div>
+
+    <!-- MAIN PORTFOLIO CONTENT -->
+    <div class="content">
+
+        <!-- HOME / HERO -->
+        <section id="home" class="hero">
+            <h1><span class="glow">yourdevname</span></h1>
+            <p>Advanced Roblox Scripter • Core Game Frameworks • Optimized UI Systems</p>
+            <span class="tag">💰 Robux Only</span>
+        </section>
+
+        <!-- SERVICES -->
+        <section id="services">
+            <h2>Services</h2>
+            <div class="services-grid">
+                <div class="box">
+                    <h3>UI Mechanics</h3>
+                    <p>Clean, interactive user interfaces including automated shops, dynamic menus, and tweened popups.</p>
+                </div>
+                <div class="box">
+                    <h3>Data Persistence</h3>
+                    <p>Rock-solid Datastore profile saving to safeguard player data, currencies, and custom inventories.</p>
+                </div>
+                <div class="box">
+                    <h3>Game Progression</h3>
+                    <p>Complete implementation of leaderboard statistics, level-up trees, coins, and multiplier rewards.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- DEV MORE / SYSTEMS -->
+        <section id="about">
+            <h2>Advanced Systems</h2>
+            <div class="dev-grid">
+                <div class="box">
+                    <h3>🎮 Monetization & Gamepasses</h3>
+                    <p>Engineered to drive revenue seamlessly. Custom handling for direct storefront interactions and immediate utility rewards.</p>
+                    <ul>
+                        <li>VIP status systems & tailored overhead tags</li>
+                        <li>Dynamic Stat Boosters (Speed, Jump, Power)</li>
+                        <li>Exclusive weapon, tool, and zone unlocks</li>
+                    </ul>
+                </div>
+
+                <div class="box">
+                    <h3>⚙️ Backend Architecture</h3>
+                    <p>Clean, modular framework scripts designed for scalability, zero-lag execution, and seamless integration.</p>
+                    <ul>
+                        <li>Secure RemoteEvent and RemoteFunction verification</li>
+                        <li>Modular framework architecture (Object-Oriented Coding)</li>
+                        <li>Highly performant, optimized runtime handling</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- REVIEWS -->
+        <section id="reviews">
+            <h2>Reviews</h2>
+            <div class="review-card">
+                <div class="stars">★★★★★</div>
+                <div class="review-text">
+                    "Exceptional work with remarkably clean scripting logic. The deliverables were swift, robust, and optimized perfectly for our UI systems. Communication was smooth throughout."
+                </div>
+                <div class="reviewer">@farrisnewaccount</div>
+            </div>
+        </section>
+
+        <!-- CONTACT -->
+        <section id="contact">
+            <h2>Let's Build</h2>
+            <div class="box" style="max-width: 500px;">
+                <p>Have a design document or a project in mind? Reach out via Discord for rapid development and high-efficiency code execution.</p>
+                <div class="contact-info">
+                    <div class="discord-tag">Discord: <code>your_discord_username</code></div>
+                    <a class="button" href="https://discord.com" target="_blank">Open Discord</a>
+                </div>
+            </div>
+        </section>
+
+    </div>
+
+    <!-- JAVASCRIPT FOR THE BACKGROUND -->
+    <script>
+        const container = document.getElementById("robux-container");
+
+        function createRobux() {
+            const robux = document.createElement("div");
+            robux.classList.add("robux");
+            robux.innerText = "R$";
+
+            robux.style.left = Math.random() * 100 + "vw";
+            robux.style.animationDuration = (3 + Math.random() * 4) + "s"; // Smooth, non-distracting speed
+            robux.style.fontSize = (14 + Math.random() * 14) + "px";
+
+            container.appendChild(robux);
+
+            setTimeout(() => {
+                robux.remove();
+            }, 7000);
+        }
+
+        // Generate elements seamlessly
+        setInterval(createRobux, 300);
+    </script>
+
+</body>
+</html>
