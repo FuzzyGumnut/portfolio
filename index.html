@@ -4,7 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>FuzzyGumnut | Roblox Scripter Portfolio</title>
-    <!-- Google Fonts for a cleaner, modern look -->
     <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&family=Plus+Jakarta+Sans:wght@400;600;800&display=swap" rel="stylesheet">
 
     <style>
@@ -16,6 +15,7 @@
             --accent: #ffb454;
             --accent-secondary: #e6b450;
             --accent-green: #7fd962;
+            --accent-blue: #39bae6;
         }
 
         * {
@@ -107,8 +107,15 @@
         .hero p {
             font-size: 18px;
             color: var(--text-muted);
-            margin-bottom: 20px;
+            margin-bottom: 25px;
             max-width: 650px;
+        }
+
+        .tag-container {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+            justify-content: center;
         }
 
         .tag {
@@ -120,6 +127,12 @@
             font-weight: 700;
             border: 1px solid rgba(127, 217, 98, 0.2);
             display: inline-block;
+        }
+
+        .tag.aus {
+            background: rgba(57, 186, 230, 0.1);
+            color: var(--accent-blue);
+            border-color: rgba(57, 186, 230, 0.2);
         }
 
         /* SECTION HEADINGS */
@@ -267,6 +280,22 @@
             font-size: 14px;
             color: var(--text-main);
             border: 1px solid rgba(255, 255, 255, 0.1);
+            margin-bottom: 10px;
+        }
+
+        /* BANK INFO STYLING */
+        .bank-details {
+            margin-top: 15px;
+            background: rgba(0, 0, 0, 0.2);
+            padding: 15px;
+            border-radius: 8px;
+            border-left: 2px solid var(--accent-blue);
+        }
+
+        .bank-details p {
+            font-size: 13px;
+            margin-bottom: 5px;
+            color: var(--text-main);
         }
 
         /* ROBUX BACKGROUND */
@@ -300,29 +329,27 @@
 
 <body>
 
-    <!-- BACKGROUND EFFECT -->
     <div id="robux-container"></div>
 
-    <!-- NAVIGATION BAR -->
     <div class="navbar">
         <a href="#home">HOME</a>
         <a href="#services">SERVICES</a>
         <a href="#about">SYSTEMS</a>
         <a href="#reviews">REVIEWS</a>
-        <a href="#contact">CONTACT</a>
+        <a href="#contact">HIRE ME</a>
     </div>
 
-    <!-- MAIN PORTFOLIO CONTENT -->
     <div class="content">
 
-        <!-- HOME / HERO -->
         <section id="home" class="hero">
             <h1><span class="glow">FuzzyGumnut</span></h1>
             <p>Advanced Roblox Scripter. I program clean, high-performance backend architecture, optimized game loops, and custom gameplay mechanics that run flawlessly.</p>
-            <span class="tag">💰 Robux Only</span>
+            <div class="tag-container">
+                <span class="tag">💰 Robux Accepted</span>
+                <span class="tag aus">🇦🇺 AUD Cash / Bank Transfer (Australia Only)</span>
+            </div>
         </section>
 
-        <!-- SERVICES -->
         <section id="services">
             <h2>Core Capabilities</h2>
             <div class="services-grid">
@@ -341,7 +368,6 @@
             </div>
         </section>
 
-        <!-- DEV MORE / SYSTEMS -->
         <section id="about">
             <h2>What I Can Build</h2>
             <div class="dev-grid">
@@ -373,7 +399,6 @@
             </div>
         </section>
 
-        <!-- REVIEWS -->
         <section id="reviews">
             <h2>Reviews</h2>
             <div class="review-card">
@@ -385,43 +410,12 @@
             </div>
         </section>
 
-        <!-- CONTACT -->
         <section id="contact">
             <h2>Let's Build</h2>
-            <div class="box" style="max-width: 500px;">
-                <p>Have a design document or a project in mind? Reach out via Discord for rapid development and high-efficiency code execution.</p>
-                <div class="contact-info">
-                    <div class="discord-tag">Discord: <code>Fuzzy_Gumnut</code></div>
-                    <a class="button" href="https://discord.com/users/1128631456286113803" target="_blank">Message On Discord</a>
-                </div>
-            </div>
-        </section>
-
-    </div>
-
-    <!-- JAVASCRIPT FOR THE BACKGROUND -->
-    <script>
-        const container = document.getElementById("robux-container");
-
-        function createRobux() {
-            const robux = document.createElement("div");
-            robux.classList.add("robux");
-            robux.innerText = "R$";
-
-            robux.style.left = Math.random() * 100 + "vw";
-            robux.style.animationDuration = (3 + Math.random() * 4) + "s"; // Smooth, non-distracting speed
-            robux.style.fontSize = (14 + Math.random() * 14) + "px";
-
-            container.appendChild(robux);
-
-            setTimeout(() => {
-                robux.remove();
-            }, 7000);
-        }
-
-        // Generate elements seamlessly
-        setInterval(createRobux, 300);
-    </script>
-
-</body>
-</html>
+            <div class="dev-grid">
+                <div class="box">
+                    <h3>Connect</h3>
+                    <p>Have a design document or a project in mind? Reach out via Discord for rapid development and high-efficiency code execution.</p>
+                    <div class="contact-info">
+                        <div class="discord-tag">Discord: <code>Fuzzy_Gumnut</code></div>
+                        <a class="button" href="
