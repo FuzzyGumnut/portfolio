@@ -169,6 +169,12 @@
             gap: 25px;
         }
 
+        .reviews-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+        }
+
         @media (max-width: 500px) {
             .dev-grid { grid-template-columns: 1fr; }
             .hero h1 { font-size: 44px; }
@@ -225,28 +231,34 @@
         /* REVIEWS */
         .review-card {
             background: var(--card-bg);
-            padding: 30px;
+            padding: 25px;
             border-radius: 16px;
+            border-left: 4px solid var(--accent);
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            border: 1px solid rgba(255, 255, 255, 0.02);
             border-left: 4px solid var(--accent);
         }
 
         .stars {
             color: var(--accent-secondary);
-            font-size: 18px;
-            margin-bottom: 15px;
+            font-size: 16px;
+            margin-bottom: 12px;
         }
 
         .review-text {
             font-style: italic;
             color: var(--text-main);
             margin-bottom: 15px;
-            font-size: 16px;
+            font-size: 14px;
+            flex-grow: 1;
         }
 
         .reviewer {
             color: var(--accent);
             font-weight: 700;
-            font-size: 14px;
+            font-size: 13px;
         }
 
         /* BUTTONS & LINKS */
@@ -376,13 +388,37 @@
 
         <!-- REVIEWS -->
         <section id="reviews">
-            <h2>Reviews</h2>
-            <div class="review-card">
-                <div class="stars">★★★★★</div>
-                <div class="review-text">
-                    "Exceptional work with remarkably clean scripting logic. The deliverables were swift, robust, and optimized perfectly for our UI systems. Communication was smooth throughout."
+            <h2>Client Feedback</h2>
+            <div class="reviews-grid">
+                <div class="review-card">
+                    <div>
+                        <div class="stars">★★★★★</div>
+                        <div class="review-text">
+                            "Exceptional work with remarkably clean scripting logic. The deliverables were swift, robust, and optimized perfectly for our UI systems. Communication was smooth throughout."
+                        </div>
+                    </div>
+                    <div class="reviewer">@farrisnewaccount</div>
                 </div>
-                <div class="reviewer">@farrisnewaccount</div>
+
+                <div class="review-card">
+                    <div>
+                        <div class="stars">★★★★★</div>
+                        <div class="review-text">
+                            "Vouching for him. He redid our entire inventory backend structure and added ProfileService saving because our old data handler kept failing. No data loss bugs since deployment."
+                        </div>
+                    </div>
+                    <div class="reviewer">@Xenon_Dev</div>
+                </div>
+
+                <div class="review-card">
+                    <div>
+                        <div class="stars">★★★★★</div>
+                        <div class="review-text">
+                            "Super straightforward to work with. He was honest about what could be achieved within our scope and budget, and didn't leave any messy junk code behind. Highly recommended."
+                        </div>
+                    </div>
+                    <div class="reviewer">@VortexStudios</div>
+                </div>
             </div>
         </section>
 
