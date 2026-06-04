@@ -17,6 +17,8 @@
             --accent-secondary: #e6b450;
             --accent-green: #7fd962;
             --accent-blue: #39bae6;
+            --accent-purple: #ae81ff;
+            --status-active: #ff6b6b;
         }
 
         * {
@@ -35,7 +37,7 @@
         }
 
         /* CODE STYLE FONTS */
-        code, pre, .navbar a, .button, .tag {
+        code, pre, .navbar a, .button, .tag, .status-badge {
             font-family: 'JetBrains Mono', monospace;
         }
 
@@ -169,12 +171,6 @@
             gap: 25px;
         }
 
-        .reviews-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 20px;
-        }
-
         @media (max-width: 500px) {
             .dev-grid { grid-template-columns: 1fr; }
             .hero h1 { font-size: 44px; }
@@ -226,6 +222,39 @@
         .box ul li::before {
             content: "→";
             color: var(--accent);
+        }
+
+        /* CURRENT PROJECTS STYLING */
+        .status-badge {
+            font-size: 11px;
+            font-weight: 700;
+            padding: 4px 10px;
+            border-radius: 4px;
+            text-transform: uppercase;
+            display: inline-block;
+            margin-bottom: 10px;
+        }
+        .status-badge.active {
+            background: rgba(255, 107, 107, 0.1);
+            color: var(--status-active);
+            border: 1px solid rgba(255, 107, 107, 0.2);
+        }
+        .status-badge.pending {
+            background: rgba(255, 180, 84, 0.1);
+            color: var(--accent);
+            border: 1px solid rgba(255, 180, 84, 0.2);
+        }
+        .status-badge.completed {
+            background: rgba(127, 217, 98, 0.1);
+            color: var(--accent-green);
+            border: 1px solid rgba(127, 217, 98, 0.2);
+        }
+        .project-meta {
+            font-size: 13px;
+            color: var(--text-muted);
+            margin-top: 10px;
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+            padding-top: 10px;
         }
 
         /* REVIEWS */
@@ -296,16 +325,23 @@
             margin-bottom: 10px;
         }
 
-        /* BANK INFO STYLING */
-        .bank-details {
+        /* REGIONAL / EXTRA PAYMENT INFO STYLING */
+        .payment-sub-box {
             margin-top: 15px;
             background: rgba(0, 0, 0, 0.2);
             padding: 15px;
             border-radius: 8px;
+        }
+
+        .payment-sub-box.bank {
             border-left: 2px solid var(--accent-blue);
         }
 
-        .bank-details p {
+        .payment-sub-box.crypto {
+            border-left: 2px solid var(--accent-purple);
+        }
+
+        .payment-sub-box p {
             font-size: 13px;
             margin-bottom: 5px;
             color: var(--text-main);
@@ -320,6 +356,7 @@
         <a href="#home">HOME</a>
         <a href="#services">EXPERIENCE</a>
         <a href="#about">SYSTEMS</a>
+        <a href="#projects">PROJECTS</a>
         <a href="#reviews">REVIEWS</a>
         <a href="#contact">HIRE ME</a>
     </div>
@@ -333,6 +370,7 @@
             <p>Full-Stack Programmer with 6+ years of engineering experience in Python and 2+ years of dedicated Roblox Lua development. I specialize in building solid gameplay mechanics, handling secure server architecture, and configuring game telemetry pipelines.</p>
             <div class="tag-container">
                 <span class="tag">💰 Robux Accepted</span>
+                <span class="tag">🪙 Crypto Accepted</span>
                 <span class="tag aus">🇦🇺 AUD Cash / Bank Transfer (Australia Only)</span>
             </div>
         </section>
@@ -386,8 +424,34 @@
             </div>
         </section>
 
+        <!-- CURRENT PROJECTS -->
+        <section id="projects">
+            <h2>Current Projects</h2>
+            <div class="services-grid">
+                <div class="box">
+                    <span class="status-badge active">In Progress</span>
+                    <h3>Project Celestial</h3>
+                    <p>Developing a secure data architecture layer using ProfileService alongside an automated map-rotation and round loop structure.</p>
+                    <div class="project-meta">Scope: Full Backend Architecture</div>
+                </div>
+
+                <div class="box">
+                    <span class="status-badge pending">Queued Contract</span>
+                    <h3>Combat Sandbox UI</h3>
+                    <p>Hooking up custom responsive shop layouts, inventory arrays, and dynamic overhead client trackers to a secure monetization engine.</p>
+                    <div class="project-meta">Scope: UI Core & Data Integration</div>
+                </div>
+
+                <div class="box">
+                    <span class="status-badge completed">Completed</span>
+                    <h3>Tycoon Webhook Suite</h3>
+                    <p>Configured real-time player progression telemetry and logging pipelines targeting secure Discord webhook routing layers.</p>
+                    <div class="project-meta">Status: Shipped & Stabilized</div>
+                </div>
+            </div>
+        </section>
+
         <!-- REVIEWS -->
-       <!-- REVIEWS -->
         <section id="reviews">
             <h2>Client Feedback</h2>
             <div class="services-grid">
@@ -448,9 +512,15 @@
 
                 <div class="box">
                     <h3>Payment Methods</h3>
-                    <p>I accept payments via Robux or real fiat currency. Payment coordinates can be provided directly upon contract agreement.</p>
+                    <p>I accept payments via Robux, real fiat currency, or major cryptocurrencies. Payment addresses and coordinates can be provided directly upon contract agreement.</p>
                     
-                    <div class="bank-details">
+                    <div class="payment-sub-box crypto">
+                        <p style="font-weight: bold; color: var(--accent-purple);">🪙 Cryptocurrency Accepted:</p>
+                        <p>• Supported Networks: <code>BTC</code> | <code>ETH</code> | <code>SOL</code> | <code>XMR</code> (Monero)</p>
+                        <p>• Other common/major digital assets available upon request.</p>
+                    </div>
+
+                    <div class="payment-sub-box bank">
                         <p style="font-weight: bold; color: var(--accent);">🇦🇺 Australian Clients Only:</p>
                         <p>• Direct Bank Deposit / EFT (BSB/Acc on request)</p>
                         <p>• Cash via Mail (Strictly no physical meetups)</p>
